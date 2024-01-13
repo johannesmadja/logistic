@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog>
+    
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+
+    <changeSet id="20240113-5" author="Johannes">
+
+        <createTable tableName="agence">
+            <column name="id" type="varchar">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar"></column>
+            <column name="lastName" type="varchar"></column>
+            <column name="mail" type="varchar"></column>
+            <column name="phoneNumber" type="varchar"></column>
+            <column name="role" type="tinyint"></column> <!-- reférence à un type enum -->
+        </createTable>
+
+    </changeSet>
+
+</databaseChangeLog>

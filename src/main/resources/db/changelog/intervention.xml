@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog>
+    
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+
+    <changeSet id="20240113-3" author="Johannes">
+        <createTable tableName="intervention">
+            <column name="id" type="varchar">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar"></column>
+            <column name="status" type="tinyint"></column> <!-- intervention status(enum)-->
+            <column name="orderId" type="varcher"></column> <!-- clé étrangère -->
+            <column name="total" type="number"></column>
+            <column name="expert" type="varchar"></column> <!-- clé étrangère -->
+            <column name="created" type="timestamp"></column>
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="intervention" baseColumnName="expert" constraintName="intervantion_user_fkey" referencedTableName="User" referencedColumnName="id"/>
+        <addForeignKeyConstraint baseTableName="intervention" baseColumnName="orderId" constraintName="intervantion_order_fkey" referencedTableName="order" referencedColumnName="id"/>
+
+    </changeSet>
+
+</databaseChangeLog>
