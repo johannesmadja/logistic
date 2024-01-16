@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<databaseChangeLog>
-    
+<databaseChangeLog
     xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
 
     <changeSet id="20240113-4" author="Johannes">
         <createTable tableName="prestation">
-            <column name="id" type="varchar">
+            <column name="id" type="varchar(255)">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
-            <column name="name" type="varchar"></column>
-            <column name="codeMetier" type="varchar"></column>
+            <column name="name" type="varchar(255)"></column>
+            <column name="codeMetier" type="varchar(255)"></column>
             <column name="price" type="number"></column>
             <column name="isActive" type="boolean"></column>
             <column name="description" type="timestamp"></column>

@@ -1,25 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<databaseChangeLog>
-    
+<databaseChangeLog
     xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
 
     <changeSet id="20240113-2" author="Johannes">
         <createTable tableName="order">
-            <column name="id" type="varchar">
+            <column name="id" type="varchar(255)">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
-            <column name="name" type="varchar"></column>
-            <column name="status" type="tinyint"></column> <!-- type enum comment signifier le type-->
+            <column name="name" type="varchar(255)"></column>
+            <column name="status" type="varchar(255)"></column> <!-- type enum comment signifier le type-->
             <column name="created" type="timestamp"></column>
-            <column name="deadLine" type="timestamp"></column>
-            <column name="prestations" type="varchar"></column> <!-- clé étrangère -->
-            <column name="agence" type="varchar"></column> <!-- clé étrangère -->
+            <column name="dead_line" type="timestamp"></column>
+            <column name="prestations" type="varchar(255)"></column> <!-- clé étrangère -->
+            <column name="agence" type="varchar(255)"></column> <!-- clé étrangère -->
         </createTable>
 
-        <addForeignKeyConstraint baseTableName="order" baseColumnName="prestations" constraintName="order_prestation_fkey" referencedTableName="prestations" referencedColumnName="id"/>
-        <addForeignKeyConstraint baseTableName="order" baseColumnName="agence" constraintName="order_agence_fkey" referencedTableName="agence" referencedColumnName="id"/>
+        <addForeignKeyConstraint baseTableName="order" baseColumnNames="prestations" constraintName="order_prestation_fkey" referencedTableName="prestation" referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="order" baseColumnNames="agence" constraintName="order_agence_fkey" referencedTableName="agence" referencedColumnNames="id"/>
         <!-- ajout de la contrainte  -->
     </changeSet>
 

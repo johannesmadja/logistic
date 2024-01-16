@@ -1,11 +1,13 @@
 package ExpressLogistic.demo.domaine;
 
 import java.util.Date;
+import java.util.List;
+
+import org.hibernate.annotations.GenericGenerator;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -19,16 +21,22 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Agence {
-    
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(generator = "uuid-generator")
+    @GenericGenerator(name = "uuid-generator", strategy = "org.hibernate.id.UUIDGenerator")
     private String id; 
 
     @Column()
     private String name;
 
-    @OneToMany
-    private User manager;
+    // @ManyToMany
+    // @JoinTable(name = "agence_users", 
+    // joinColumns = @JoinColumn(name = "agence_id", referencedColumnName = "id"), 
+    // inverseJoinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"))
+    // private List<User> managers;
+
+    @OneToMany(mappedBy = "agences")
+    private List<User> managers;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date created = new Date();

@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<databaseChangeLog>
-    
+<databaseChangeLog
     xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
 
     <changeSet id="20240113-1" author="Johannes">
         <createTable tableName="agence">
-            <column name="id" type="varchar">
+            <column name="id" type="varchar(255)">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
-            <column name="name" type="varchar"></column>
-            <column name="manager" type="varchar"></column>
+            <column name="name" type="varchar(255)"></column>
+            <!-- <column name="manager" type="varchar"></column> -->
             <column name="valid" type="boolean"></column>
         </createTable>
-        <addForeignKeyConstraint baseTableName="agence" baseColumnName="manager" constraintName="agence_user_fkey" referencedTableName="User" referencedColumnName="id"/>
+        <!-- <addForeignKeyConstraint baseTableName="agence" baseColumnName="manager" constraintName="agence_user_fkey" referencedTableName="User" referencedColumnName="id"/> -->
     </changeSet>
 
 </databaseChangeLog>

@@ -2,13 +2,11 @@ package ExpressLogistic.demo.domaine;
 
 import java.util.Date;
 
-import ExpressLogistic.demo.domaine.enumeration.OrderStatus;
+import org.hibernate.annotations.GenericGenerator;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -23,14 +21,14 @@ import lombok.Setter;
 @Setter
 public class Order {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(generator = "uuid-generator")
+    @GenericGenerator(name = "uuid-generator", strategy = "org.hibernate.id.UUIDGenerator")
     private String id;
 
     @Column()
     private String name;
 
-    @Enumerated(EnumType.STRING)
-    private OrderStatus status;
+    private String status;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date created = new Date();

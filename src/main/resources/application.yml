@@ -1,0 +1,21 @@
+server:
+    port: 8002
+spring:
+  profiles:
+    active:
+      - dev
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/logistic
+    username: root
+    password:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  liquibase:
+    contexts: dev, faker
+    change-log: classpath:/db/master.xml
+    enabled: true
