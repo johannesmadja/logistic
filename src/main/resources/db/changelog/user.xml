@@ -11,15 +11,29 @@
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="name" type="varchar(255)"></column>
-            <column name="lastName" type="varchar(255)"></column>
+            <column name="last_name" type="varchar(255)"></column>
             <column name="mail" type="varchar(255)"></column>
-            <column name="phoneNumber" type="varchar(255)"></column>
+            <column name="phone_number" type="varchar(255)"></column>
             <column name="role" type="varchar(255)"></column> <!-- reférence à un type enum -->
-            <!-- <column name="agence" type="varchar"></column> -->
+            <!-- <column name="agence_id" type="varchar"></column> -->
         </createTable>
 
-        <!-- <addForeignKeyConstraint baseTableName="user" baseColumnName="agence" constraintName="user_agence_fkey" referencedTableName="agence" referencedColumnName="id"/> -->
+        <!-- <addForeignKeyConstraint baseTableName="user" baseColumnName="agence_id" constraintName="user_agence_fkey" referencedTableName="agence" referencedColumnName="id"/> -->
 
     </changeSet>
+
+    <!-- <changeSet id="20240117-1" author="Johannes">
+        <dropColumn tableName="user" columnName="lastName"></dropColumn>
+        <dropColumn tableName="user" columnName="phoneNumber"></dropColumn>
+    </changeSet>
+
+    <changeSet id="20240117-2" author="Johannes">
+        <dropColumn tableName="user" columnName="last_name"></dropColumn>
+        <dropColumn tableName="user" columnName="phone_number"></dropColumn>
+        <addColumn tableName="user">
+            <column name="last_name" type="varchar(255)"></column>
+            <column name="phone_number" type="varchar(255)"></column>
+        </addColumn>
+    </changeSet> -->
 
 </databaseChangeLog>
